@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:svg_flutter/svg.dart';
 
+import 'text_sliding_animation_builder.dart';
+
 class SplashScreenBody extends StatefulWidget {
   const SplashScreenBody({
     super.key,
@@ -14,12 +16,11 @@ class SplashScreenBody extends StatefulWidget {
 
 class _SplashScreenBodyState extends State<SplashScreenBody>
     with SingleTickerProviderStateMixin {
-  //ده هو اللي بيعمل refresh
-// يعني مثلا لو الوقت 60 ثانيه هو مسؤول انكل ثانية هيعمل رفيريش هيغير القيم
-  late AnimationController animationController; //Range 0 to 1
-  //لو عايز Range اعلى من كدا =>
-  //هتحط فوقيه اوبجيكت ياخد القيم منه ويرجعلك ال => Range you need
+
+  late AnimationController animationController; 
+  
   late Animation<Offset> slidingAnimation;
+  
   @override
   void initState() {
     animationController =
@@ -29,16 +30,10 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
           0,
           12,
         ),
-        end:  Offset.zero).animate(animationController); //كدا انت حطيته فوق ال parent
-    //offset ==> transation between x and y
-    // Offset(dx, dy)
-    //offset(0,0)==>نقطة الاصل
+        end:  Offset.zero).animate(animationController); 
+   
     animationController.forward();
-    // slidingAnimation.addListener(() {
-    //   setState(() {});
-    // });
-    //تقدر تستغنى عن دي باستخدام 
-    //AnimatedBuilder
+  
 
     super.initState();
   }
@@ -48,7 +43,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment:
-          CrossAxisAlignment.stretch, //خلي ال childern تاخد عرض ال =>colmun
+          CrossAxisAlignment.stretch, 
       children: [
         SvgPicture.asset(
           AssetsData.logoPath,
@@ -58,13 +53,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
         const SizedBox(
           height: 15,
         ),
-        SlideTransition(
-          position: slidingAnimation,
-          child: const Text(
-            "Read Free Books",
-            textAlign: TextAlign.center,
-          ),
-        )
+        TextSlidingAnimationBuilder(slidingAnimation: slidingAnimation)
       ],
     );
   }
