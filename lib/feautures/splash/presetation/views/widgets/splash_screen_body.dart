@@ -16,24 +16,27 @@ class SplashScreenBody extends StatefulWidget {
 
 class _SplashScreenBodyState extends State<SplashScreenBody>
     with SingleTickerProviderStateMixin {
+  late AnimationController animationController;
 
-  late AnimationController animationController; 
-  
-  late Animation<Offset> slidingAnimation;
-  
+  late Animation<Offset> slidingAnimationtext;
+  late Animation<double> fadeAnimationlogoImage;
+
   @override
   void initState() {
     animationController =
         AnimationController(vsync: this, duration: const Duration(seconds: 2));
-    slidingAnimation = Tween<Offset>(
-        begin: const Offset(
-          0,
-          12,
-        ),
-        end:  Offset.zero).animate(animationController); 
-   
+    slidingAnimationtext = Tween<Offset>(
+            begin: const Offset(
+              0,
+              10,
+            ),
+            end: Offset.zero)
+        .animate(animationController);
+    fadeAnimationlogoImage =
+        Tween<double>(begin: 0,end:1 )
+            .animate(animationController);
+
     animationController.forward();
-  
 
     super.initState();
   }
@@ -42,18 +45,21 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment:
-          CrossAxisAlignment.stretch, 
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        SvgPicture.asset(
-          AssetsData.logoPath,
-          width: 70,
-          height: 70,
+        FadeTransition(
+        
+          opacity: fadeAnimationlogoImage,
+          child: SvgPicture.asset(
+            AssetsData.logoPath,
+            width: 70,
+            height: 70,
+          ),
         ),
         const SizedBox(
           height: 15,
         ),
-        TextSlidingAnimationBuilder(slidingAnimation: slidingAnimation)
+        TextSlidingAnimationBuilder(slidingAnimation: slidingAnimationtext)
       ],
     );
   }
