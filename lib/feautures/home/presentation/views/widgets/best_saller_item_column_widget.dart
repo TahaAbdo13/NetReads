@@ -2,6 +2,8 @@ import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
+import 'books_rating.dart';
+
 class BestSallerItemColumnWidget extends StatelessWidget {
   const BestSallerItemColumnWidget({
     super.key,
@@ -22,7 +24,8 @@ class BestSallerItemColumnWidget extends StatelessWidget {
             style: Styles.textStyle20.copyWith(fontFamily: kGTSectraFine),
           ),
         ),
-        const Text("J.K. Rowling", style: Styles.textStyle14),
+        Text("J.K. Rowling",
+            style: Styles.textStyle14.copyWith(color:const Color(0xff707070))),
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.5,
           child: Row(
@@ -32,23 +35,7 @@ class BestSallerItemColumnWidget extends StatelessWidget {
                 style: Styles.textStyle20.copyWith(fontWeight: FontWeight.bold),
               ),
               const Spacer(),
-              const Icon(
-                Icons.star,
-                color: Colors.orange,
-              ),
-              const SizedBox(
-                width: 6,
-              ),
-              Text(
-                "4.8",
-                style: Styles.textStyle16.copyWith(fontWeight: FontWeight.w500),
-              ),
-              const SizedBox(width: 9),
-              Text(
-                "(2390)",
-                style: Styles.textStyle14
-                    .copyWith(color: Colors.white.withOpacity(.5)),
-              ),
+              const BooksRating(),
             ],
           ),
         )

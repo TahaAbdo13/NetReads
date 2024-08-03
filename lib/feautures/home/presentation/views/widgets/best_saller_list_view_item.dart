@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'best_saller_item_column_widget.dart';
 
@@ -29,7 +28,7 @@ class BestSallerListViewItem extends StatelessWidget {
           const SizedBox(
             width: 30,
           ),
-        const  BestSallerItemColumnWidget()
+          const BestSallerItemColumnWidget()
         ],
       ),
     );
