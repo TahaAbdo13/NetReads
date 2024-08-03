@@ -31,9 +31,25 @@ class HomeViewBody extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          BestSallerListViewItem()
+          Expanded(child: BestSallerListViewBuilder())
         ],
       ),
     );
+  }
+}
+
+class BestSallerListViewBuilder extends StatelessWidget {
+  const BestSallerListViewBuilder({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: 5,
+        itemBuilder: (context, i) {
+          return const Padding(
+            padding: EdgeInsets.only(bottom: 20.0),
+            child: BestSallerListViewItem(),
+          );
+        });
   }
 }
