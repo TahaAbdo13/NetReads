@@ -20,10 +20,12 @@ class HomeViewBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 40,
+                height: 20,
               ),
               Padding(
-                padding: EdgeInsets.only(left: 30.0, top: 20),
+                padding: EdgeInsets.only(
+                  left: 30.0,
+                ),
                 child: CustomAppBarWidget(),
               ),
               SizedBox(
@@ -44,6 +46,7 @@ class HomeViewBody extends StatelessWidget {
           ),
         ),
         SliverFillRemaining(
+          fillOverscroll: true,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.0),
             child: BestSallerListViewBuilder(),
