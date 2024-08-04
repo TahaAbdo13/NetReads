@@ -29,7 +29,7 @@ class HomeViewBody extends StatelessWidget {
               SizedBox(
                 height: 42,
               ),
-              CustomBooksListView(),
+              CustomBooksListView(size: .25,),
               SizedBox(
                 height: 49,
               ),
