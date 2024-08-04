@@ -24,8 +24,10 @@ class BestSallerItemColumnWidget extends StatelessWidget {
             style: Styles.textStyle20.copyWith(fontFamily: kGTSectraFine),
           ),
         ),
-        Text("J.K. Rowling",
-            style: Styles.textStyle14.copyWith(color:const Color(0xff707070))),
+        const Opacity(
+          opacity: .7,
+          child: Text("J.K. Rowling", style: Styles.textStyle14),
+        ),
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.5,
           child: Row(

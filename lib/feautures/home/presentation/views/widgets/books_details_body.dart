@@ -37,10 +37,12 @@ class BooksDetailsBody extends StatelessWidget {
             const SizedBox(
               height: 4,
             ),
-            Text(
-              "Rudyard Kipling",
-              style:
-                  Styles.textStyle18.copyWith(color: const Color(0xff707070)),
+            const Opacity(
+              opacity: .7,
+              child: Text(
+                "Rudyard Kipling",
+                style: Styles.textStyle18,
+              ),
             ),
             const SizedBox(
               height: 14,
@@ -49,7 +51,10 @@ class BooksDetailsBody extends StatelessWidget {
             const SizedBox(
               height: 37,
             ),
-        const    CustomButton(),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              child: BooksAction(),
+            ),
             const SizedBox(
               height: 49,
             ),

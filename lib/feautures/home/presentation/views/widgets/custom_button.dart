@@ -1,46 +1,80 @@
 import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
-class CustomButton extends StatelessWidget {
-  const CustomButton({
+class BooksAction extends StatelessWidget {
+  const BooksAction({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return  Row(
       children: [
-        Container(
-          alignment: AlignmentDirectional.center,
-          padding:
-              const EdgeInsets.only(bottom: 10, top: 14, left: 45, right: 54),
-          decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                  bottomLeft: Radius.circular(12))),
-          child: Text(
-            "19.99€",
-            style: Styles.textStyle18
-                .copyWith(fontWeight: FontWeight.bold, color: Colors.black),
+        Expanded(
+          child: CustomButton(
+            color: Colors.white,
+            topLeft: 12,
+            bottomLeft: 12,
+            topRight: 0,
+            bottomRight: 0,
+            textColor: Colors.black,
+            text: '19.99€', onPressed: () {  },
           ),
         ),
-        Container(
-          alignment: AlignmentDirectional.center,
-          padding:
-              const EdgeInsets.only(bottom: 14, top: 13, right: 28, left: 31),
-          decoration: const BoxDecoration(
-              color: Color(0xffEF8262),
-              borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(12),
-                  bottomRight: Radius.circular(12))),
-          child: Text(
-            "Free preview",
-            style: Styles.textStyle16.copyWith(fontWeight: FontWeight.bold),
+        Expanded(
+          child: CustomButton(
+            color: const Color(0xffEF8262),
+            topLeft: 0,
+            bottomLeft: 0,
+            topRight: 12,
+            bottomRight: 12,
+            textColor: Colors.white,
+            text: 'Free preview', onPressed: () {  },
           ),
         )
       ],
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  final double topLeft, bottomLeft, topRight, bottomRight;
+  final Color color;
+  final Color textColor;
+  final String text;
+  final void Function() onPressed;
+  const CustomButton({
+    super.key,
+    required this.topLeft,
+    required this.bottomLeft,
+    required this.topRight,
+    required this.bottomRight,
+    required this.color,
+    required this.textColor,
+    required this.text, required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 58,
+      child: TextButton(
+          style: TextButton.styleFrom(
+              backgroundColor: color,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(topLeft),
+                  bottomLeft: Radius.circular(bottomLeft),
+                  topRight: Radius.circular(topRight),
+                  bottomRight: Radius.circular(bottomRight),
+                ),
+              )),
+          onPressed: () {},
+          child: Text(
+            text,
+            style: Styles.textStyle16
+                .copyWith(color: textColor, fontWeight: FontWeight.bold),
+          )),
     );
   }
 }
