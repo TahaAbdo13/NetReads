@@ -1,4 +1,8 @@
+import 'package:bookly/core/utils/app_router.dart';
+import 'package:bookly/feautures/home/presentation/views/widgets/custom_books_list_view.dart';
+import 'package:bookly/feautures/home/presentation/views/widgets/custom_list_view_item.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'best_saller_item_column_widget.dart';
 
 class BestSallerListViewItem extends StatelessWidget {
@@ -8,28 +12,21 @@ class BestSallerListViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 120, //مش مهتم بتكون ريسبونسيف لانها كدا كدا >ListView
-      child: Row(
-        children: [
-          AspectRatio(
-            aspectRatio: 2.7 / 4,
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.red,
-                  image: const DecorationImage(
-                      image: NetworkImage(
-                        "https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-169994-674010.jpg&fm=jpg",
-                      ),
-                      fit: BoxFit.cover),
-                  borderRadius: BorderRadius.circular(10)),
+    return GestureDetector(
+      onTap: () {
+        GoRouter.of(context).push(AppRouter.bookDetailsViewPath);
+      },
+      child: const SizedBox(
+        height: 120, //مش مهتم بتكون ريسبونسيف لانها كدا كدا >ListView
+        child: Row(
+          children: [
+            CustomBookImage(),
+            SizedBox(
+              width: 30,
             ),
-          ),
-          const SizedBox(
-            width: 30,
-          ),
-          const BestSallerItemColumnWidget()
-        ],
+            BestSallerItemColumnWidget()
+          ],
+        ),
       ),
     );
   }

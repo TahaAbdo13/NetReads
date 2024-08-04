@@ -58,24 +58,40 @@ class BooksDetailsBody extends StatelessWidget {
             const SizedBox(
               height: 49,
             ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  "You can also like",
-                  style: Styles.textStyle14,
-                ),
-              ],
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "You can also like",
+                style: Styles.textStyle14,
+              ),
             ),
             const SizedBox(
               height: 16,
             ),
-            const CustomBooksListView(
-              size: .15,
-            )
+            const CustomListViewBooksDetails()
           ],
         ),
       ),
+    );
+  }
+}
+
+class CustomListViewBooksDetails extends StatelessWidget {
+  const CustomListViewBooksDetails({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * .15,
+      child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: 6,
+          itemBuilder: (context, index) {
+            return const Padding(
+              padding: EdgeInsets.only(right: 16.0),
+              child: CustomBookImage(),
+            );
+          }),
     );
   }
 }
