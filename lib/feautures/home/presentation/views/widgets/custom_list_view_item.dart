@@ -1,9 +1,9 @@
-import 'package:bookly/constants.dart';
+import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/core/utils/assets.dart';
-import 'package:bookly/feautures/home/presentation/views/books_details_view.dart';
+
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+
+import 'package:go_router/go_router.dart';
 
 class CustomListViewItem extends StatelessWidget {
   const CustomListViewItem({
@@ -14,8 +14,7 @@ class CustomListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(const BooksDetailsView(),
-            transition: Transition.fadeIn, duration: kNavigateDurayion);
+        GoRouter.of(context).push(AppRouter.bookDetailsViewPath);
       },
       child: AspectRatio(
         aspectRatio: 2.6 / 4,
