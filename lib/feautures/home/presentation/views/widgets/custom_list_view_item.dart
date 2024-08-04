@@ -14,7 +14,7 @@ class CustomListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(BooksDetailsView(),
+        Get.to(const BooksDetailsView(),
             transition: Transition.fadeIn, duration: kNavigateDurayion);
       },
       child: AspectRatio(
@@ -27,7 +27,7 @@ class CustomListViewItem extends StatelessWidget {
                   ),
                   fit: BoxFit.cover),
               color: Colors.red,
-              borderRadius: BorderRadius.circular(20)),
+              borderRadius: BorderRadius.circular(12)),
         ),
       ),
     );
