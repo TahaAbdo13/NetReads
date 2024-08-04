@@ -14,7 +14,7 @@ class Bookly extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
+      theme: ThemeData.dark(useMaterial3: true).copyWith(
           scaffoldBackgroundColor: kPrimaryColor,
           textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark()
               .textTheme)), //هي متعرفة على اللايت ثيم عشان كدا اللون هيبقى اسود=> عرفها على الارك ثيم

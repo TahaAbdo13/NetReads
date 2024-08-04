@@ -8,29 +8,38 @@ class BooksAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    return Row(
       children: [
         Expanded(
           child: CustomButton(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(12),
+              bottomLeft: Radius.circular(12),
+              topRight: Radius.circular(0),
+              bottomRight: Radius.circular(0),
+            ),
             color: Colors.white,
-            topLeft: 12,
-            bottomLeft: 12,
-            topRight: 0,
-            bottomRight: 0,
-            textColor: Colors.black,
-            text: '19.99€', onPressed: () {  },
+            text: '19.99€',
+            onPressed: () {},
+            style: Styles.textStyle16.copyWith(
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
           ),
         ),
         Expanded(
           child: CustomButton(
-            color: const Color(0xffEF8262),
-            topLeft: 0,
-            bottomLeft: 0,
-            topRight: 12,
-            bottomRight: 12,
-            textColor: Colors.white,
-            text: 'Free preview', onPressed: () {  },
-          ),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(0),
+                bottomLeft: Radius.circular(0),
+                topRight: Radius.circular(12),
+                bottomRight: Radius.circular(12),
+              ),
+              color: const Color(0xffEF8262),
+              text: 'Free preview',
+              onPressed: () {},
+              style: Styles.textStyle14
+                  .copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
         )
       ],
     );
@@ -38,21 +47,19 @@ class BooksAction extends StatelessWidget {
 }
 
 class CustomButton extends StatelessWidget {
-  final double topLeft, bottomLeft, topRight, bottomRight;
   final Color color;
-  final Color textColor;
+
   final String text;
   final void Function() onPressed;
-  const CustomButton({
-    super.key,
-    required this.topLeft,
-    required this.bottomLeft,
-    required this.topRight,
-    required this.bottomRight,
-    required this.color,
-    required this.textColor,
-    required this.text, required this.onPressed,
-  });
+  final TextStyle style;
+  final BorderRadiusGeometry? borderRadius;
+  const CustomButton(
+      {super.key,
+      required this.color,
+      required this.text,
+      required this.onPressed,
+      required this.style,
+      this.borderRadius});
 
   @override
   Widget build(BuildContext context) {
@@ -62,18 +69,12 @@ class CustomButton extends StatelessWidget {
           style: TextButton.styleFrom(
               backgroundColor: color,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(topLeft),
-                  bottomLeft: Radius.circular(bottomLeft),
-                  topRight: Radius.circular(topRight),
-                  bottomRight: Radius.circular(bottomRight),
-                ),
+                borderRadius: borderRadius ?? BorderRadius.circular(12),
               )),
           onPressed: () {},
           child: Text(
             text,
-            style: Styles.textStyle16
-                .copyWith(color: textColor, fontWeight: FontWeight.bold),
+            style: style,
           )),
     );
   }
