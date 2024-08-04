@@ -20,9 +20,11 @@ class BooksDetailsBody extends StatelessWidget {
           const SizedBox(
             height: 36,
           ),
-          SizedBox(
-              height: MediaQuery.of(context).size.height * 0.25,
-              child: const CustomListViewItem()),
+          Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * .2),
+            child: CustomBookImage(),
+          ),
           const SizedBox(
             height: 40,
           ),
@@ -60,9 +62,6 @@ class BooksDetailsBody extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          SizedBox(
-              height: MediaQuery.of(context).size.height * 0.12,
-              child: const CustomListViewItem())
         ],
       ),
     );
