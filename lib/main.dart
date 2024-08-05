@@ -23,6 +23,6 @@ class Bookly extends StatelessWidget {
   }
 }
 //1- separte your project to 2 folders
-     // 1- feauture folder => بتحط فيه صفحة او صفحتيه ليهم نفس ال => feature
-     //1- core folder=> بتحط فيه الحاجات المتشابهةبين كل ال => feuture=> عشان متكرش حاجة 
+// 1- feauture folder => بتحط فيه صفحة او صفحتيه ليهم نفس ال => feature
+//1- core folder=> بتحط فيه الحاجات المتشابهةبين كل ال => feuture=> عشان متكرش حاجة
 //2- هنستخدم => get statemanagemet => عشان ندير بيها التنقل بين الصفحات

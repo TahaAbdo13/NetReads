@@ -11,12 +11,16 @@ abstract class AppRouter {
   static GoRouter router = GoRouter(
     routes: [
       GoRoute(
-        path: '/',//هي دي البداية
+        path: '/', //هي دي البداية
         builder: (context, state) => const SplashView(),
       ),
-      GoRoute(path: homeViewPath, builder: (context, state) => const HomeView()),
-      GoRoute(path: bookDetailsViewPath, builder: (context, state) => const BooksDetailsView()),
-      GoRoute(path: searchViewPath,builder: (context,state)=>const SearchView())
+      GoRoute(
+          path: homeViewPath, builder: (context, state) => const HomeView()),
+      GoRoute(
+          path: bookDetailsViewPath,
+          builder: (context, state) => const BooksDetailsView()),
+      GoRoute(
+          path: searchViewPath, builder: (context, state) => const SearchView())
     ],
   );
 }

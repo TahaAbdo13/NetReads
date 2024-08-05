@@ -2,7 +2,6 @@ import 'package:bookly/feautures/home/presentation/views/widgets/custom_list_vie
 import 'package:flutter/material.dart';
 
 class CustomBooksListView extends StatelessWidget {
-  
   const CustomBooksListView({super.key});
 
   @override
@@ -14,8 +13,8 @@ class CustomBooksListView extends StatelessWidget {
           itemCount: 6,
           itemBuilder: (context, index) {
             return const Padding(
-              padding:   EdgeInsets.only(right: 16.0),
-              child:  CustomBookImage(),
+              padding: EdgeInsets.only(right: 16.0),
+              child: CustomBookImage(),
             );
           }),
     );

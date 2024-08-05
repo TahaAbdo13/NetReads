@@ -2,7 +2,6 @@ import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/feautures/home/presentation/views/widgets/cstom_button.dart';
 import 'package:flutter/material.dart';
 
-
 class BooksAction extends StatelessWidget {
   const BooksAction({
     super.key,
@@ -47,4 +46,3 @@ class BooksAction extends StatelessWidget {
     );
   }
 }
-
