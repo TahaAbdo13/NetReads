@@ -13,6 +13,8 @@ class GetFeaturedBooksCubit extends Cubit<GetFeaturedBooksState> {
     emit(GetFeaturedBooksLoading());
     var result = await homeRepo.fetchFeaturedBooks();
     result.fold((failure) {
+      //برتجعلك اوبجيكت في حالة => success
+      //بترجعلك اوبجيكت في حالة ال => failure
       emit(GetFeaturedBooksFailure(failure.errMessag));
     }, (books) {
       emit(GetFeaturedBooksSuccess(books:books));
