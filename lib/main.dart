@@ -1,5 +1,6 @@
 import "package:bookly/constants.dart";
 import "package:bookly/core/utils/app_router.dart";
+import "package:bookly/core/utils/boc_observer.dart";
 import "package:bookly/core/utils/service_locator.dart";
 import "package:bookly/feautures/home/data/repository/home_repo_implementation.dart";
 import "package:bookly/feautures/home/presentation/manager/getFeaturedBooks_cubit/get_featured_books_cubit.dart";
@@ -7,7 +8,9 @@ import "package:bookly/feautures/home/presentation/manager/get_best_saller_books
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:google_fonts/google_fonts.dart";
+
 void main() {
+  Bloc.observer = SimpleBlocObserver();
   setup();
   runApp(const Bookly());
 }
@@ -20,8 +23,9 @@ class Bookly extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => GetFeaturedBooksCubit(getIt.get<
-                  HomeImplementation>()..fetchFeaturedBooks() //كدا انت خدت نسخة من اوبجيكت انت كنت عاملة قبل كدا
+          create: (context) => GetFeaturedBooksCubit(
+              getIt.get<HomeImplementation>()
+                ..fetchFeaturedBooks() //كدا انت خدت نسخة من اوبجيكت انت كنت عاملة قبل كدا
               ),
         ),
         BlocProvider(
