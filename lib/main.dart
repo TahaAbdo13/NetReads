@@ -10,9 +10,10 @@ import "package:flutter_bloc/flutter_bloc.dart";
 import "package:google_fonts/google_fonts.dart";
 
 void main() {
-  Bloc.observer = SimpleBlocObserver();
+  
   setup();
   runApp(const Bookly());
+   Bloc.observer= SimpleBlocObserver();
 }
 
 class Bookly extends StatelessWidget {
@@ -25,8 +26,8 @@ class Bookly extends StatelessWidget {
         BlocProvider(
           create: (context) => GetFeaturedBooksCubit(
               getIt.get<HomeImplementation>()
-                ..fetchFeaturedBooks() //كدا انت خدت نسخة من اوبجيكت انت كنت عاملة قبل كدا
-              ),
+              
+              )  ..fetchFeaturedBooks() //كدا انت خدت نسخة من اوبجيكت انت كنت عاملة قبل كدا,
         ),
         BlocProvider(
           create: (context) =>
