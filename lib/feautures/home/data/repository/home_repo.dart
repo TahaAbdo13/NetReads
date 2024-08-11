@@ -8,7 +8,8 @@ abstract class HomeRepo {
   //بتجبر الشخص اللي هيشتغل على الريبو دي ينفذ الفانكشن اللي جواها وكمان يعمل
   //return ==> على حسب ما انت محدد
   //انت كمان بتتحكم في اللي هتستقبله ال => method
- Future<Either<Failure,List<BookModel>>> fetchFeaturedBooks();
-  Future<Either<Failure,List<BookModel>>> fetchBestSallerBooks();
+  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks();
+  Future<Either<Failure, List<BookModel>>> fetchBestSallerBooks();
+  Future<Either<Failure, List<BookModel>>> fetchSimillerBooks({required String category});
 }
 //في حالة الايرور انت متعرفش هترجع اي الافضل انك تعمل class هو ده اللي ترجعه وكل ايرور يقابلك تخليه ابن لهذا الكلاس

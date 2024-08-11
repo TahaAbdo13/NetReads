@@ -1,12 +1,15 @@
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/feautures/home/data/models/book_model/book.mdel.dart';
 import 'package:flutter/material.dart';
 
 import 'books_rating.dart';
 
 class BestSallerItemColumnWidget extends StatelessWidget {
+  final BookModel bookModel;
   const BestSallerItemColumnWidget({
     super.key,
+    required this.bookModel,
   });
 
   @override
@@ -18,15 +21,16 @@ class BestSallerItemColumnWidget extends StatelessWidget {
           width: MediaQuery.of(context).size.width *
               0.5, //عشان ياخد مساحة الشاشة المناسبة
           child: Text(
-            "Harry Potter and the Goblet of Fire",
+            bookModel.volumeInfo.title,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: Styles.textStyle20.copyWith(fontFamily: kGTSectraFine),
           ),
         ),
-        const Opacity(
+        Opacity(
           opacity: .7,
-          child: Text("J.K. Rowling", style: Styles.textStyle14),
+          child: Text(bookModel.volumeInfo.authors?.first??"",
+              style: Styles.textStyle14),
         ),
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.5,

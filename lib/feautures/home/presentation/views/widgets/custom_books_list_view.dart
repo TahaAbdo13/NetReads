@@ -1,3 +1,4 @@
+import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/core/widgets/custom_Text_errMessage.dart';
 import 'package:bookly/core/widgets/custom_circuler_progress_indicatro.dart';
 import 'package:bookly/feautures/home/data/models/book_model/book.mdel.dart';
@@ -5,6 +6,7 @@ import 'package:bookly/feautures/home/presentation/manager/getFeaturedBooks_cubi
 import 'package:bookly/feautures/home/presentation/views/widgets/custom_list_view_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomBooksListView extends StatelessWidget {
   const CustomBooksListView({super.key});
@@ -25,8 +27,7 @@ class CustomBooksListView extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.only(right: 16.0),
                     child: CustomBookImage(
-                      imageUrl:
-                          booksData[index].volumeInfo.imageLinks.thumbnail,
+                   bookModel: booksData[index],
                     ),
                   );
                 }),
