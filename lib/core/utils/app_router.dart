@@ -19,7 +19,8 @@ abstract class AppRouter {
           path: homeViewPath, builder: (context, state) => const HomeView()),
       GoRoute(
           path: bookDetailsViewPath,
-          builder: (context, state) =>  BooksDetailsView(bookModel:  state.extra as BookModel)),
+          builder: (context, state) =>
+              BooksDetailsView(bookModel: state.extra as BookModel)),
       GoRoute(
           path: searchViewPath, builder: (context, state) => const SearchView())
     ],

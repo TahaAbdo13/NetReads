@@ -43,10 +43,8 @@ class BooksAction extends StatelessWidget {
               ),
               color: const Color(0xffEF8262),
               text: getText(bookModel: bookModel),
-              onPressed: () {
-                customUrlLauncher(
-                    context: context,
-                    urlSearch: bookModel.volumeInfo.previewLink!);
+              onPressed:(){
+                customUrlLauncher(context: context, urlSearch: bookModel.volumeInfo.previewLink!);
               },
               style: Styles.textStyle14
                   .copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
