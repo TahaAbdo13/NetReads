@@ -1,15 +1,17 @@
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/feautures/home/data/models/book_model/book.mdel.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_text_form_field.dart';
 import 'search_result_list_view.dart';
 
 class SearchViewBody extends StatelessWidget {
-  const SearchViewBody({super.key});
+  final List<BookModel> books;
+  const SearchViewBody({super.key, required this.books});
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
+    return  Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 30.0,
       ),
@@ -19,7 +21,7 @@ class SearchViewBody extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          CustomTextFormField(),
+          CustomTextFormField(books: books,),
           SizedBox(
             height: 16,
           ),
