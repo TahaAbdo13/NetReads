@@ -9,9 +9,9 @@ class SearchResultListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
         padding: EdgeInsets.all(0),
-        itemCount: 20,
+        itemCount: 0,
         itemBuilder: (context, i) {
-          List<BookModel> books=[];
+          List<BookModel> books = [];
           return Padding(
             padding: EdgeInsets.only(bottom: 20.0),
             child: BestSallerListViewItem(
