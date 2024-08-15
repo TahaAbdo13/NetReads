@@ -21,4 +21,6 @@ final class SearchCubitFailure extends SearchCubitState {
   final String errMessage;
 
   const SearchCubitFailure({required this.errMessage});
+ 
 }
+ class SearchCubitEmpty extends SearchCubitState {}

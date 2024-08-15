@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:svg_flutter/svg.dart';
 
 import 'text_sliding_animation_builder.dart';
@@ -28,7 +29,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
   @override
   void initState() {
     initAnimatedFunction();
-    navigateMethod();
+    navigateMethod(context);
     super.initState();
   }
 
@@ -61,9 +62,20 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
     );
   }
 
-  void navigateMethod() {
+  void navigateMethod(context) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    bool isFirst = sharedPreferences.getBool("isFirst") ?? false;
+
+    String route;
+    if (isFirst==false) {
+        sharedPreferences.setBool("isFirst", true);
+      route = AppRouter.onBoardingScreen;
+    
+    } else {
+      route = AppRouter.homeViewPath;
+    }
     Future.delayed(const Duration(seconds: 3), () {
-      context.go(AppRouter.homeViewPath);
+      GoRouter.of(context).pushReplacement(route);
     });
   }
 

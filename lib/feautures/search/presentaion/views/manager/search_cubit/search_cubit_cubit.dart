@@ -8,6 +8,8 @@ part 'search_cubit_state.dart';
 class SearchCubitCubit extends Cubit<SearchCubitState> {
   SearchCubitCubit(this.seachViewRepo) : super(SearchCubitInitial());
   final SeachViewRepo seachViewRepo;
+  List<BookModel> resultSearch = [];
+
   void search({required String search, required List<BookModel> books}) async {
     emit(SearchCubitLoading());
     var response =
@@ -15,7 +17,11 @@ class SearchCubitCubit extends Cubit<SearchCubitState> {
     response.fold((failure) {
       emit(SearchCubitFailure(errMessage: failure));
     }, (searchReasult) {
+      resultSearch = searchReasult;
       emit(SearchCubitSuccess(searchReaslut: searchReasult));
     });
+    if (resultSearch.isEmpty) {
+      emit(SearchCubitEmpty());
+    }
   }
 }
