@@ -5,6 +5,8 @@ import 'package:bookly/feautures/home/presentation/views/widgets/custom_list_vie
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
+
+import 'shimmer_widgets/featured_books_listview_builder.dart';
 class CustomBooksListView extends StatelessWidget {
   const CustomBooksListView({super.key});
   @override
@@ -33,33 +35,7 @@ class CustomBooksListView extends StatelessWidget {
             errMessage: state.errMessage,
           );
         } else {
-          return SizedBox(
-            height: MediaQuery.of(context).size.height * .25,
-            child: ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                itemCount: 4,
-                itemBuilder: (context, index) {
-                  return Padding(
-                      padding: const EdgeInsets.only(right: 16.0),
-                      child: SizedBox(
-                        height: MediaQuery.of(context).size.height * .25,
-                        child: Shimmer.fromColors(
-                          baseColor: Colors.grey,
-                          highlightColor: Colors.grey.withOpacity(.5),
-                          child: AspectRatio(
-                            aspectRatio: 2.7 / 4,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ));
-                }),
-          );
+          return const ShimmerFeaturedBooksListViewBuilder();
         }
       },
     );

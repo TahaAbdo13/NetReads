@@ -1,14 +1,12 @@
 import 'package:bookly/core/widgets/custom_Text_errMessage.dart';
-import 'package:bookly/core/widgets/custom_circuler_progress_indicatro.dart';
 import 'package:bookly/feautures/home/data/models/book_model/book.mdel.dart';
 import 'package:bookly/feautures/home/presentation/manager/get_similler_books_cubit/get_similler_book_cubit_cubit.dart';
 import 'package:bookly/feautures/home/presentation/views/widgets/custom_list_view_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'shimmer_widgets/shimmer_similler_books_list_view_builder.dart';
 class CustomListViewBooksDetails extends StatelessWidget {
   const CustomListViewBooksDetails({super.key});
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GetSimillerBookCubitCubit, GetSimillerBookCubitState>(
@@ -23,16 +21,14 @@ class CustomListViewBooksDetails extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.only(right: 10.0),
-                    child: CustomBookImage(
-                        bookModel:simillerBooks[index]
-                            ),
+                    child: CustomBookImage(bookModel: simillerBooks[index]),
                   );
                 }),
           );
         } else if (state is GetSimillerBookCubitFailure) {
           return CustomErrMessage(errMessage: state.errMessage);
         } else {
-          return const CustomCircularProgressIndicator();
+          return const  ShimmerSimillerBooksListViewBuilder();
         }
       },
     );
