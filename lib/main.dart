@@ -35,7 +35,9 @@ class Bookly extends StatelessWidget {
         ),
       ],
       child: MaterialApp.router(
+        
         debugShowCheckedModeBanner: false,
+        title: "NetReads",
         theme: ThemeData.dark(useMaterial3: true).copyWith(
             scaffoldBackgroundColor: kPrimaryColor,
             textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark()

@@ -10,13 +10,13 @@ class CustomBooksDetailsAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Icon(Icons.close),
-        const Spacer(),
-        IconButton(
-            onPressed: () {
+        GestureDetector(
+            onTap: () {
               GoRouter.of(context).pop();
             },
-            icon: const Icon(Icons.shopping_cart))
+            child: const Icon(Icons.close)),
+        const Spacer(),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart))
       ],
     );
   }

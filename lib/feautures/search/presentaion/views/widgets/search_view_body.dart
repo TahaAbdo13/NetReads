@@ -34,11 +34,7 @@ class _SearchViewBodyState extends State<SearchViewBody> {
             onChanged: (value) {
               BlocProvider.of<SearchCubitCubit>(context)
                   .search(search: value, books: widget.books);
-              if (value.isEmpty) {
-                setState(() {
-                  BlocProvider.of<SearchCubitCubit>(context).resultSearch = [];
-                });
-              }
+             
             },
           ),
           const SizedBox(

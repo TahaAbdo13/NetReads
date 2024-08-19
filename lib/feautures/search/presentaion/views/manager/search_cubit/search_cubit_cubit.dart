@@ -12,16 +12,20 @@ class SearchCubitCubit extends Cubit<SearchCubitState> {
 
   void search({required String search, required List<BookModel> books}) async {
     emit(SearchCubitLoading());
-    var response =
-        await seachViewRepo.searchForBooks(search: search, books: books);
-    response.fold((failure) {
-      emit(SearchCubitFailure(errMessage: failure));
-    }, (searchReasult) {
-      resultSearch = searchReasult;
-      emit(SearchCubitSuccess(searchReaslut: searchReasult));
-    });
-    if (resultSearch.isEmpty) {
+    if (search.isEmpty) {
       emit(SearchCubitEmpty());
+    } else {
+      var response =
+          await seachViewRepo.searchForBooks(search: search, books: books);
+      response.fold((failure) {
+        emit(SearchCubitFailure(errMessage: failure));
+      }, (searchReasult) {
+        resultSearch = searchReasult;
+        emit(SearchCubitSuccess(searchReaslut: searchReasult));
+      });
+      if (resultSearch.isEmpty) {
+        emit(SearchCubitEmpty());
+      }
     }
   }
 }
